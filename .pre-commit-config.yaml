@@ -1,0 +1,27 @@
+default_language_version:
+  python: python3
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-added-large-files
+        args: ['--maxkb=800']
+      - id: check-executables-have-shebangs
+      - id: check-shebang-scripts-are-executable
+      - id: check-json
+      - id: check-yaml
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: fix-byte-order-marker
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: ['--fix=no']
+      - id: trailing-whitespace
+  - repo: https://github.com/nicklockwood/SwiftFormat
+    rev: 0.51.12
+    hooks:
+      - id: swiftformat
+  - repo: https://github.com/realm/SwiftLint
+    rev: 0.52.2
+    hooks:
+      - id: swiftlint
