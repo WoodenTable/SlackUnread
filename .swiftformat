@@ -1,0 +1,34 @@
+# https://github.com/nicklockwood/SwiftFormat/blob/master/Rules.md
+
+--acronyms
+--allman false
+--patternlet hoist
+--indent 4
+--ifdef indent
+--modifierorder
+--decimalgrouping 3,6
+--binarygrouping 4,8
+--hexgrouping 4,8
+--hexliteralcase lowercase
+--self insert
+--redundanttype explicit
+--semicolons never
+--trimwhitespace always
+--closurevoid preserve
+
+--enable blankLinesAtEndOfScope
+--enable blankLinesBetweenScopes
+--enable consecutiveSpaces
+--enable duplicateImports
+--enable preferKeyPath
+--enable redundantBreak
+--enable redundantClosure
+--enable redundantNilInit
+--enable redundantParens
+--enable redundantReturn
+--enable spaceAroundParens
+--enable spaceInsideBrackets
+--enable spaceInsideGenerics
+--enable spaceInsideParens
+--disable blankLinesAtStartOfScope
+--disable unusedArguments
