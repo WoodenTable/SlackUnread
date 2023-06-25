@@ -1,6 +1,5 @@
 # https://github.com/nicklockwood/SwiftFormat/blob/master/Rules.md
 
---acronyms
 --allman false
 --patternlet hoist
 --indent 4
@@ -16,6 +15,7 @@
 --trimwhitespace always
 --closurevoid preserve
 
+--enable acronyms
 --enable blankLinesAtEndOfScope
 --enable blankLinesBetweenScopes
 --enable consecutiveSpaces
