@@ -1,0 +1,39 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - master
+      - dev/*
+
+# https://docs.github.com/en/actions/learn-github-actions/contexts
+# github.workflow: The name of the workflow.
+# github.ref: The fully-formed ref of the branch or tag that triggered the workflow run.
+#   The ref given is fully-formed, meaning that for branches the format is refs/heads/<branch_name>,
+#   for pull requests it is refs/pull/<pr_number>/merge, and for tags it is refs/tags/<tag_name>
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  test:
+    # https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md
+    runs-on: macos-12
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: xavierLowmiller/xcodegen-action@1.1.2
+
+      - name: Install Packages
+        run: xcodebuild -resolvePackageDependencies -scmProvider system -list -project SlackUnread.xcodeproj
+
+      - name: SwiftFormat
+        run: swiftformat --lint .
+
+      - name: SwiftLint
+        run: swiftlint lint
