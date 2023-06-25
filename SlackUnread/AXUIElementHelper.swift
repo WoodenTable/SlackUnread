@@ -25,15 +25,15 @@ enum AXUIElementHelper {
         AXIsProcessTrustedWithOptions(options as CFDictionary)
     }
 
-    static func badgeLabelOfApplication() -> String? {
+    static func badgeLabelOfApplication(appName: String) -> (error: String?, badge: String?) {
         let dockBundleID = "com.apple.dock"
         guard let dockApp = NSRunningApplication.runningApplications(withBundleIdentifier: dockBundleID).first else {
-            return nil
+            return ("Dock not running", nil)
         }
 
         let appElement = AXUIElementCreateApplication(dockApp.processIdentifier)
         guard let dockList = appElement.children.first else {
-            return nil
+            return ("Read badge error", nil)
         }
 
         for dockIcon in dockList.children {
@@ -41,15 +41,15 @@ enum AXUIElementHelper {
             guard let dockItemTitle = try? dockIcon.getAttributeStringValue(kAXTitleAttribute) else {
                 continue
             }
-            if dockItemTitle != "Slack" {
+            if dockItemTitle != appName {
                 continue
             }
 
             guard let badgeText = try? dockIcon.getAttributeStringValue(kAXStatusLabelAttribute) else {
                 continue
             }
-            return badgeText
+            return (nil, badgeText)
         }
-        return nil
+        return ("App not running", nil)
     }
 }
