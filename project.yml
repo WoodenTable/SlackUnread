@@ -9,9 +9,8 @@ options:
     macOS: 11.0.0
 
 settings:
-  DEVELOPMENT_TEAM: 8FAH9UCUG8
   CODE_SIGN_STYLE: Automatic
-  CODE_SIGN_IDENTITY: Apple Development
+  CODE_SIGN_IDENTITY: '-'
   DEAD_CODE_STRIPPING: YES
 
 packages:

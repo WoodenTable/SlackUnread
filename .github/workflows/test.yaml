@@ -30,10 +30,13 @@ jobs:
       - uses: xavierLowmiller/xcodegen-action@1.1.2
 
       - name: Install Packages
-        run: xcodebuild -resolvePackageDependencies -scmProvider system -list -project SlackUnread.xcodeproj
+        run: xcodebuild -resolvePackageDependencies -project SlackUnread.xcodeproj
 
       - name: SwiftFormat
         run: swiftformat --lint .
 
       - name: SwiftLint
         run: swiftlint lint
+
+      - name: Unit Test
+        run: xcodebuild test -project SlackUnread.xcodeproj -scheme SlackUnread | xcpretty
