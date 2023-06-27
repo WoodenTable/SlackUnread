@@ -31,7 +31,7 @@ targets:
       base:
         INFOPLIST_FILE: SlackUnread/Info.plist
         CODE_SIGN_ENTITLEMENTS: SlackUnread/SlackUnread.entitlements
-        MARKETING_VERSION: 1.0.0
+        MARKETING_VERSION: 0.1.0
         CURRENT_PROJECT_VERSION: 2
     dependencies:
       - package: SnapKit
