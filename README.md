@@ -2,6 +2,8 @@
 
 Show the number of unread messages in Slack on the menu bar.
 
+![SlackUnread](https://github.com/WoodenTable/SlackUnread/assets/1326517/92abdbf1-d81b-4f7d-90b9-35d3189a9591)
+
 ### Why this project?
 
 Because I want to hide the Dock to save screen space, but Slack does not support displaying the number of unread messages in the menu bar, so I created this project.
