@@ -33,11 +33,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let menu = NSMenu()
 
         let errorHandleItem = NSMenuItem(title: "", action: #selector(self.didTapErrorHandleMenuItem), keyEquivalent: "")
-
+        let aboutItem = NSMenuItem(title: "About", action: #selector(NSApplication.orderFrontStandardAboutPanel(_:)), keyEquivalent: "")
         let quitItem = NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "")
 
         menu.addItem(errorHandleItem)
         menu.addItem(NSMenuItem.separator())
+        menu.addItem(aboutItem)
         menu.addItem(quitItem)
 
         self.statusItem.menu = menu
