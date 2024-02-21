@@ -22,8 +22,8 @@ defaults:
 
 jobs:
   test:
-    # https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md
-    runs-on: macos-12
+    # https://github.com/actions/runner-images/blob/main/images/macos/macos-14-Readme.md
+    runs-on: macos-13
     steps:
       - uses: actions/checkout@v3
 
@@ -34,6 +34,10 @@ jobs:
 
       - name: SwiftFormat
         run: swiftformat --lint .
+
+      # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners/about-github-hosted-runners#standard-github-hosted-runners-for-public-repositories
+      # https://github.com/actions/runner-images/blob/main/images/macos/macos-14-arm64-Readme.md
+      # macos-14 is M1, don't have SwiftLint installed
 
       - name: SwiftLint
         run: swiftlint lint

@@ -33,7 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let menu = NSMenu()
 
         let errorHandleItem = NSMenuItem(title: "", action: #selector(self.didTapErrorHandleMenuItem), keyEquivalent: "")
-        let aboutItem = NSMenuItem(title: "About", action: #selector(NSApplication.orderFrontStandardAboutPanel(_:)), keyEquivalent: "")
+        let aboutItem = NSMenuItem(title: "About", action: #selector(self.showAboutDialog), keyEquivalent: "")
         let quitItem = NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "")
 
         menu.addItem(errorHandleItem)
@@ -100,5 +100,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         true
+    }
+
+    @objc func showAboutDialog() {
+        NSApplication.shared.activate(ignoringOtherApps: true)
+        NSApplication.shared.orderFrontStandardAboutPanel()
     }
 }
